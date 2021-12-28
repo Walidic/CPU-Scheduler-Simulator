@@ -32,6 +32,8 @@ public class shortestRemainingTime {
                     mainArrayindex++;
                 }
             }
+            //get least arrival and burst time
+
         }
     }
 
