@@ -4,7 +4,9 @@ public class Process {
     private int burstTime;
     private int arrivalTime;
     private int priorityNumber;
-
+    private int PID;
+    private int waitingTime;
+    private int turnAroundTime;
     public String getName() {
         return this.name;
     }
@@ -43,6 +45,30 @@ public class Process {
 
     public void setPriorityNumber(int priorityNumber) {
         this.priorityNumber = priorityNumber;
+    }
+
+    public int getPID() {
+        return PID;
+    }
+
+    public void setPID(int PID) {
+        this.PID = PID;
+    }
+
+    public int getWaitingTime() {
+        return waitingTime;
+    }
+
+    public void setWaitingTime(int waitingTime) {
+        this.waitingTime = waitingTime;
+    }
+
+    public int getTurnAroundTime() {
+        return turnAroundTime;
+    }
+
+    public void setTurnAroundTime(int turnAroundTime) {
+        this.turnAroundTime = turnAroundTime;
     }
 
 }
