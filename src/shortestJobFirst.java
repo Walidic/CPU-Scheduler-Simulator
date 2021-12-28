@@ -19,6 +19,8 @@ public class shortestJobFirst implements IScheduler {
                     processes[i]=processes[j];
                     processes[j]=temp;
                 }
+
+                
             }
         }
     }
