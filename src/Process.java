@@ -9,16 +9,13 @@ public class Process {
     private int turnAroundTime;
     private int executionTime;
 
-    public Process(String pname, String pcolour, int AT, int BT, int priority, int pid, int WT, int TT, int ET){
+    public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
         name = pname;
         colour = pcolour;
         arrivalTime = AT;
         burstTime = BT;
         priorityNumber = priority;
         PID = pid;
-        waitingTime = WT;
-        turnAroundTime = TT;
-        executionTime = ET;
     }
     public String getName() {
         return this.name;
