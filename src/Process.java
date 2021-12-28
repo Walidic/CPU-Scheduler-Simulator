@@ -7,6 +7,7 @@ public class Process {
     private int PID;
     private int waitingTime;
     private int turnAroundTime;
+    private int executionTime;
     public String getName() {
         return this.name;
     }
@@ -69,6 +70,14 @@ public class Process {
 
     public void setTurnAroundTime(int turnAroundTime) {
         this.turnAroundTime = turnAroundTime;
+    }
+
+    public int getExecutionTime() {
+        return executionTime;
+    }
+
+    public void setExecutionTime(int executionTime) {
+        this.executionTime = executionTime;
     }
 
 }
