@@ -4,7 +4,7 @@ public class Process {
     private int burstTime;
     private int arrivalTime;
     private int priorityNumber;
-
+    
     public String getName() {
         return this.name;
     }
