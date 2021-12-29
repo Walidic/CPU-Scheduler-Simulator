@@ -32,6 +32,9 @@ public class shortestRemainingTime {
                     pool[i] = processes[mainArrayindex];
                     pool[i].setScratch(pool[i].getBurstTime());
                     mainArrayindex++;
+                    if (pool[i] == processes[processes.length - 1]) {
+                        break;
+                    }
                 }
             }
             int availble[] = new int[] { -1, -1, -1, -1 };
@@ -102,7 +105,8 @@ class Main {
         Process p2 = new Process("p2", "x", 2, 2, 0, 100);
         Process p3 = new Process("p3", "x", 2, 4, 0, 100);
         Process p4 = new Process("p4", "x", 5, 1, 0, 100);
-        Process arr[] = new Process[] { p1, p2, p3, p4 };
+        Process p5 = new Process("p5", "x", 5, 1, 0, 100);
+        Process arr[] = new Process[] { p1, p2, p3, p4, p5 };
         shortestRemainingTime x = new shortestRemainingTime();
         x.Schedule(arr);
     }
