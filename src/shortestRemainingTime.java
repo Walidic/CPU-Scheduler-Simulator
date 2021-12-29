@@ -69,6 +69,22 @@ public class shortestRemainingTime {
         return result;
     }
 
+    public float getAverageWaitingTime(Process[] result) {
+        float avg = 0;
+        for (int i = 0; i < result.length; i++) {
+            avg = avg + result[i].getWaitingTime();
+        }
+        return avg;
+    }
+
+    public float getAverageTurnAroundTime(Process[] result) {
+        float avg = 0;
+        for (int i = 0; i < result.length; i++) {
+            avg = avg + result[i].getTurnAroundTime();
+        }
+        return avg;
+    }
+
     private boolean isPoolEmpty(Process[] pool) {
         for (int i = 0; i < pool.length; i++) {
             if (pool[i] != null) {
@@ -77,6 +93,7 @@ public class shortestRemainingTime {
         }
         return true;
     }
+
 }
 
 class Main {
