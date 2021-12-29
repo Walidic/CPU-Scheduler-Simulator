@@ -53,11 +53,6 @@ public class shortestRemainingTime {
                     }
                 }
             }
-            // if (pool[minBurstTimeIndex].getBurstTime() ==
-            // pool[minBurstTimeIndex].getScratch()) {
-            // pool[minBurstTimeIndex].setWaitingTime(currentTime -
-            // pool[minBurstTimeIndex].getArrivalTime());
-            // }
             if (pool[minBurstTimeIndex].getScratch() == 1) {
                 pool[minBurstTimeIndex].setWaitingTime(currentTime + 1
                         - (pool[minBurstTimeIndex].getArrivalTime() + pool[minBurstTimeIndex].getBurstTime()));
@@ -68,8 +63,6 @@ public class shortestRemainingTime {
             pool[minBurstTimeIndex].setScratch(pool[minBurstTimeIndex].getScratch() - 1);
             result[currentTime] = pool[minBurstTimeIndex];
             if (deleteFlag) {
-                System.out.println(pool[minBurstTimeIndex].getName());
-                System.out.println(pool[minBurstTimeIndex].getWaitingTime());
                 pool[minBurstTimeIndex] = null;
             }
         }
