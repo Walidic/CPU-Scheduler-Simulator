@@ -9,6 +9,7 @@ public class Process {
     private int turnAroundTime;
     private int executionTime;
     private int scratch; //used for calculations
+    private int Quantam;
 
     public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
         name = pname;
@@ -97,5 +98,13 @@ public class Process {
 
     public int getScratch() {
         return scratch;
+    }
+
+    public int getQuantam() {
+        return Quantam;
+    }
+
+    public void setQuantam(int Quantam) {
+        this.Quantam = Quantam;
     }
 }
