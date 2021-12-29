@@ -53,13 +53,14 @@ public class shortestRemainingTime {
                     }
                 }
             }
-            if (pool[minBurstTimeIndex].getBurstTime() == pool[minBurstTimeIndex].getScratch()) {
-                pool[minBurstTimeIndex].setWaitingTime(currentTime - pool[minBurstTimeIndex].getArrivalTime());
-            }
+            // if (pool[minBurstTimeIndex].getBurstTime() ==
+            // pool[minBurstTimeIndex].getScratch()) {
+            // pool[minBurstTimeIndex].setWaitingTime(currentTime -
+            // pool[minBurstTimeIndex].getArrivalTime());
+            // }
             if (pool[minBurstTimeIndex].getScratch() == 1) {
-                pool[minBurstTimeIndex].setWaitingTime(pool[minBurstTimeIndex].getWaitingTime() + currentTime + 1
-                        - pool[minBurstTimeIndex].getBurstTime());
-
+                pool[minBurstTimeIndex].setWaitingTime(currentTime + 1
+                        - (pool[minBurstTimeIndex].getArrivalTime() + pool[minBurstTimeIndex].getBurstTime()));
                 pool[minBurstTimeIndex].setTurnAroundTime(
                         pool[minBurstTimeIndex].getWaitingTime() + pool[minBurstTimeIndex].getBurstTime());
                 deleteFlag = true;
