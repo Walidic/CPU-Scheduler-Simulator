@@ -1,13 +1,22 @@
 public class Process {
     private String name;
     private String colour;
-    private int burstTime;
     private int arrivalTime;
+    private int burstTime;
     private int priorityNumber;
     private int PID;
     private int waitingTime;
     private int turnAroundTime;
     private int executionTime;
+
+    public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
+        name = pname;
+        colour = pcolour;
+        arrivalTime = AT;
+        burstTime = BT;
+        priorityNumber = priority;
+        PID = pid;
+    }
     public String getName() {
         return this.name;
     }
