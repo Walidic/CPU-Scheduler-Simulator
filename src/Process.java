@@ -8,6 +8,7 @@ public class Process {
     private int waitingTime;
     private int turnAroundTime;
     private int executionTime;
+    private int scratch; //used for calculations
 
     public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
         name = pname;
@@ -16,6 +17,7 @@ public class Process {
         burstTime = BT;
         priorityNumber = priority;
         PID = pid;
+        scratch = 0;
     }
     public String getName() {
         return this.name;
@@ -89,4 +91,11 @@ public class Process {
         this.executionTime = executionTime;
     }
 
+    public void setScratch(int scratch) {
+        this.scratch = scratch;
+    }
+
+    public int getScratch() {
+        return scratch;
+    }
 }
