@@ -3,9 +3,9 @@ public class priorityDraft
     int totalTime = 0;
     int t = 0;
     int totalWaitTime = 0;
-    int totalTurnAroundTime = 0;
+    int numOfProceses=0;
     public Process[] schedule(Process[]inputList)
-    {
+    {   numOfProceses = inputList.length;
         for(int i = 0; i < inputList.length; i++){
             totalTime += inputList[i].getBurstTime();
         }
@@ -40,17 +40,12 @@ public class priorityDraft
                     }
                 }
             }
-            // for(int i=0; i <arriveTemp.length; i++)
-            // {
-            //     if(i!=maxPriorityIndex && available[i]==1 && arriveTemp[i]!=null )
-            //     {
-            //         arriveTemp[i].setPriorityNumber(arriveTemp[i].getPriorityNumber()+(t-arriveTemp[i].getArrivalTime()));
-            //     }
-            // }
+            arriveTemp[maxPriorityIndex].setWaitingTime(t - arriveTemp[maxPriorityIndex].getArrivalTime());
+            arriveTemp[maxPriorityIndex].setTurnAroundTime(arriveTemp[maxPriorityIndex].getBurstTime() + arriveTemp[maxPriorityIndex].getWaitingTime());
+            totalWaitTime= totalWaitTime + (t - arriveTemp[maxPriorityIndex].getArrivalTime());
             for(int i = 0; i < arriveTemp[maxPriorityIndex].getBurstTime(); i++){
                 schedule[t+i] = arriveTemp[maxPriorityIndex];
             }
-
             int x = arriveTemp[maxPriorityIndex].getBurstTime();
             deleteFlag = true;
             if(deleteFlag){
@@ -77,6 +72,14 @@ public class priorityDraft
         }
         return schedule;
     }
+    public float avgWaitingTime()
+    {
+        return totalWaitTime/numOfProceses;
+    }
+    public float avgTurnAroundTime()
+    {
+        return (totalWaitTime+totalTime)/numOfProceses;
+    }
 }
 
 class Main {
@@ -97,5 +100,12 @@ class Main {
             System.out.print(" ");
             System.out.println(arr2[i].getPriorityNumber());
         }
+        int z=5;
+        int s=2;
+        float y = z/s;
+        System.out.println("************");
+        System.out.println(y);
+        System.out.println( x.avgTurnAroundTime());
+        System.out.println( x.avgWaitingTime());
     }
 }
