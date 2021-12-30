@@ -14,6 +14,7 @@ public class Process {
     public boolean flag = false;
     private int Quantam;
     private boolean isDisplayed;
+    private boolean isGraphed;
 
     public Process(String pname, String pcolour, int AT, int BT, int priority, int Quantam) {
         Random rand = new Random();
@@ -25,6 +26,7 @@ public class Process {
         PID = rand.nextInt(99999);
         scratch = 0;
         isDisplayed = false;
+        isGraphed = false;
         this.Quantam = Quantam;
     }
 
@@ -122,5 +124,13 @@ public class Process {
 
     public void setDisplayed(boolean isDisplayed) {
         this.isDisplayed = isDisplayed;
+    }
+
+    public boolean getGraphed() {
+        return isGraphed;
+    }
+
+    public void setGraphed(boolean isGraphed) {
+        this.isGraphed = isGraphed;
     }
 }
