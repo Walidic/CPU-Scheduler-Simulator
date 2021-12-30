@@ -8,7 +8,8 @@ public class Process {
     private int waitingTime;
     private int turnAroundTime;
     private int executionTime;
-    private int scratch; //used for calculations
+    private float scratch; //used for calculations
+    public boolean flag=false;
     private int Quantam;
     private boolean isDisplayed;
 
@@ -94,11 +95,11 @@ public class Process {
         this.executionTime = executionTime;
     }
 
-    public void setScratch(int scratch) {
+    public void setScratch(float scratch) {
         this.scratch = scratch;
     }
 
-    public int getScratch() {
+    public float getScratch() {
         return scratch;
     }
 
