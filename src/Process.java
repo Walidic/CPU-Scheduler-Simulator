@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Process {
     private String name;
     private String colour;
@@ -8,21 +10,24 @@ public class Process {
     private int waitingTime;
     private int turnAroundTime;
     private int executionTime;
-    private int scratch; //used for calculations
-    public boolean flag=false;
+    private int scratch; // used for calculations
+    public boolean flag = false;
     private int Quantam;
     private boolean isDisplayed;
 
-    public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
+    public Process(String pname, String pcolour, int AT, int BT, int priority, int Quantam) {
+        Random rand = new Random();
         name = pname;
         colour = pcolour;
         arrivalTime = AT;
         burstTime = BT;
         priorityNumber = priority;
-        PID = pid;
+        PID = rand.nextInt(99999);
         scratch = 0;
         isDisplayed = false;
+        this.Quantam = Quantam;
     }
+
     public String getName() {
         return this.name;
     }

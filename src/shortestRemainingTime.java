@@ -95,15 +95,15 @@ public class shortestRemainingTime {
 
 }
 
-class Main {
-    public static void main(String[] args) {
-        Process p1 = new Process("p1", "x", 0, 5, 0, 100);
-        Process p2 = new Process("p2", "x", 2, 2, 0, 100);
-        Process p3 = new Process("p3", "x", 2, 4, 0, 100);
-        Process p4 = new Process("p4", "x", 5, 1, 0, 100);
-        Process p5 = new Process("p5", "x", 5, 1, 0, 100);
-        Process arr[] = new Process[] { p1, p2, p3, p4, p5 };
-        shortestRemainingTime x = new shortestRemainingTime();
-        x.Schedule(arr);
-    }
-}
+// class Main {
+//     public static void main(String[] args) {
+//         Process p1 = new Process("p1", "x", 0, 5, 0, 100);
+//         Process p2 = new Process("p2", "x", 2, 2, 0, 100);
+//         Process p3 = new Process("p3", "x", 2, 4, 0, 100);
+//         Process p4 = new Process("p4", "x", 5, 1, 0, 100);
+//         Process p5 = new Process("p5", "x", 5, 1, 0, 100);
+//         Process arr[] = new Process[] { p1, p2, p3, p4, p5 };
+//         shortestRemainingTime x = new shortestRemainingTime();
+//         x.Schedule(arr);
+//     }
+// }

@@ -1,33 +1,58 @@
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("enter the number of processes ");
-        int n = 4;
-        //System.out.println("fill processes");
-        Process p1 = new Process("p1", "red", 0, 4, 0, 4984);
-        Process p2 = new Process("p2", "green", 2, 5, 0, 591);
-        Process p3 = new Process("p3", "blue", 3, 2, 0, 3143);
-        Process p4 = new Process("p4", "black", 5, 2, 0, 7989);
-        Process[] processList = new Process[] {p1, p2, p3, p4};
-        /*
-        for (int i = 0; i < n; i++){
-            System.out.println("process info for: " + (i+1));
-            Process newP = new Process(sc.next(), sc.next(), sc.nextInt(), sc.nextInt(), 0, (i+1));
-            processList[i] = newP;
+        System.out.print("enter the number of procesess you want the scheduler to simulate: ");
+        int NoOfP = sc.nextInt();
+        Process p[] = new Process[NoOfP];
+        for (int i = 0; i < NoOfP; i++) {
+            System.out.print("enter name: ");
+            String pname = sc.nextLine();
+            System.out.println("Enter colour(hex): ");
+            String pcolour = sc.nextLine();
+            System.out.println("Enter arrival time: ");
+            int AT = sc.nextInt();
+            System.out.println("Enter burst time: ");
+            int BT = sc.nextInt();
+            System.out.println("Enter priority: ");
+            int priority = sc.nextInt();
+            System.out.println("Enter Quantum time: ");
+            int Quantam = sc.nextInt();
+            Process temp = new Process(pname, pcolour, AT, BT, priority, Quantam);
+            p[i] = temp;
         }
-        */
-        sc.close();
-        SJF test = new SJF();
-        int outSize = 0;
-        for(int i = 0; i < n; i++){
-            outSize += processList[i].getBurstTime();
+        System.out.println(
+                "Choose type of scheduling to simulate'\n'1-Priority'\n'2-Shortest job first'\n'3-Shortest remaining time first'\n'4-AGAT");
+        System.out.print("Enter number: ");
+        int choice = sc.nextInt();
+        int w;
+        int t;
+        switch (choice) {
+            case (1):
+                priority x = new priority();
+                Process result[] = x.schedule(p);
+                // w = x.
+                // t = x.
+                break;
+            case (2):
+                SJF y = new SJF();
+                Process result1[] = y.schedule(p, p.length);
+                // int w = x.
+                // int t = x.
+                break;
+            case (3):
+                shortestRemainingTime z = new shortestRemainingTime();
+                Process result2[] = z.Schedule(p);
+                // int w = x.
+                // int t = x.
+                break;
+            case (4):
+                AGAT a = new AGAT();
+                Process result3[] = a.Schedule(p);
+                // int w = x.
+                // int t = x.
+                break;
         }
-        Process[] outputList = new Process[outSize];
-        outputList = test.schedule(processList, n);
-        float avgWT = test.getAvgWT(n);
-        float avgTT = test.getAvgTT(n);
-        new GUI(outputList, 4, "SFJ", avgWT, avgTT);
     }
 }
