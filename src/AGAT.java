@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class AGAT {
     private int v1,v2;
 
+    private int remainder,lastrrIndex;
     public void Schedule(Process[] processes){
         Process scratch[] = new Process[processes.length];
         for (int i = 0; i < scratch.length; i++) {
@@ -70,7 +71,7 @@ public class AGAT {
 
             for (int i = 0; i < scratch.length; i++) {
                 if (scratch != null) {
-                    scratch[i].setScratch((10-scratch[i].getPriorityNumber())+(scratch[i].getArrivalTime()/v1)+(scratch[i].getBurstTime()/v2));
+                    scratch[i].setScratch((int)((10-scratch[i].getPriorityNumber())+(Math.ceil(scratch[i].getArrivalTime()/v1))+(Math.ceil(scratch[i].getBurstTime()/v2))));
                 }
             } //calculating load factor
 
@@ -85,8 +86,8 @@ public class AGAT {
                     minFactorindex = i;
                 }
             }
-            int pt = scratch[minFactorindex].getQuantam();
-
+            long pt = scratch[minFactorindex].getQuantam();
+            pt = Math.round(pt*0.4);
         }
     }
 }

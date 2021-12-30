@@ -2,8 +2,11 @@ public class shortestRemainingTime {
 
     private int totalTime = 0;
     private int currentTime = 0;
+    private int totalWaitingTime;
+    private int noOfProcesses;
 
     public Process[] Schedule(Process[] processes) {
+        noOfProcesses = processes.length;
         for (int i = 0; i < processes.length; i++) {
             totalTime = totalTime + processes[i].getBurstTime();
         }
@@ -59,6 +62,7 @@ public class shortestRemainingTime {
             if (pool[minBurstTimeIndex].getScratch() == 1) {
                 pool[minBurstTimeIndex].setWaitingTime(currentTime + 1
                         - (pool[minBurstTimeIndex].getArrivalTime() + pool[minBurstTimeIndex].getBurstTime()));
+                totalWaitingTime = pool[minBurstTimeIndex].getWaitingTime();
                 pool[minBurstTimeIndex].setTurnAroundTime(
                         pool[minBurstTimeIndex].getWaitingTime() + pool[minBurstTimeIndex].getBurstTime());
                 deleteFlag = true;
@@ -73,19 +77,11 @@ public class shortestRemainingTime {
     }
 
     public float getAverageWaitingTime(Process[] result) {
-        float avg = 0;
-        for (int i = 0; i < result.length; i++) {
-            avg = avg + result[i].getWaitingTime();
-        }
-        return avg;
+        return totalWaitingTime / noOfProcesses;
     }
 
     public float getAverageTurnAroundTime(Process[] result) {
-        float avg = 0;
-        for (int i = 0; i < result.length; i++) {
-            avg = avg + result[i].getTurnAroundTime();
-        }
-        return avg;
+        return totalWaitingTime + totalTime / noOfProcesses;
     }
 
     private boolean isPoolEmpty(Process[] pool) {
