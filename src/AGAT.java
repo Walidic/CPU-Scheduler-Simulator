@@ -2,9 +2,22 @@ public class AGAT {
     private float v1, v2;
     private int lastindex = -1;
     private int lastQtime = -1;
+    public int np;
+    public int tw;
+    public int tbt;
+
+    public float avgw() {
+        return tw / np;
+    }
+
+    public float avgt() {
+        return (tw + tbt) / np;
+    }
 
     public Process[] Schedule(Process[] processes) {
         Process scratch[] = new Process[processes.length];
+        np = processes.length;
+
         for (int i = 0; i < scratch.length; i++) {
             scratch[i] = null;
         }
@@ -13,6 +26,7 @@ public class AGAT {
         for (int i = 0; i < processes.length; i++) {
             totalTime = totalTime + processes[i].getBurstTime();
         }
+        tbt = totalTime;
         Process result[] = new Process[totalTime];
         v1 = processes[0].getArrivalTime();
         for (int i = 1; i < processes.length; i++) {

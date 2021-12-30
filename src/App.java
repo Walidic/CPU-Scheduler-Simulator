@@ -26,32 +26,32 @@ public class App {
                 "Choose type of scheduling to simulate'\n'1-Priority'\n'2-Shortest job first'\n'3-Shortest remaining time first'\n'4-AGAT");
         System.out.print("Enter number: ");
         int choice = sc.nextInt();
-        int w;
-        int t;
+        float w;
+        float t;
         switch (choice) {
             case (1):
                 priority x = new priority();
                 Process result[] = x.schedule(p);
-                // w = x.
-                // t = x.
+                w = x.avgWaitingTime();
+                t = x.avgTurnAroundTime();
                 break;
             case (2):
                 SJF y = new SJF();
                 Process result1[] = y.schedule(p, p.length);
-                // int w = x.
-                // int t = x.
+                w = y.getAvgWT(p.length);
+                t = y.getAvgTT(p.length);
                 break;
             case (3):
                 shortestRemainingTime z = new shortestRemainingTime();
                 Process result2[] = z.Schedule(p);
-                // int w = x.
-                // int t = x.
+                w = z.getAverageWaitingTime();
+                t = z.getAverageTurnAroundTime();
                 break;
             case (4):
                 AGAT a = new AGAT();
                 Process result3[] = a.Schedule(p);
-                // int w = x.
-                // int t = x.
+                w = a.avgw();
+                t = a.avgt();
                 break;
         }
     }
