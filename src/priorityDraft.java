@@ -82,30 +82,30 @@ public class priorityDraft
     }
 }
 
-class Main {
-    public static void main(String[] args) {
-        System.out.println('a');
-        //  String pname, String pcolour, int AT, int BT, int priority, int pid
-        Process p1 = new Process("p1", "x", 0, 4, 2, 50);
-        Process p2 = new Process("p2", "x", 1, 3, 3, 70);
-        Process p3 = new Process("p3", "x", 2, 1, 4, 101);
-        Process p4 = new Process("p4", "x", 3, 5, 5, 100);
-        Process p5 = new Process("p5", "x", 4, 2, 5, 100);
-        Process arr[] = new Process[] { p1, p2, p3, p4,p5 };
-        priorityDraft x = new priorityDraft();
-        Process arr2[] = (x.schedule(arr));
-        for (int i=0;i<arr2.length; i++)
-        {
-            System.out.print(arr2[i].getName());
-            System.out.print(" ");
-            System.out.println(arr2[i].getPriorityNumber());
-        }
-        int z=5;
-        int s=2;
-        float y = z/s;
-        System.out.println("************");
-        System.out.println(y);
-        System.out.println( x.avgTurnAroundTime());
-        System.out.println( x.avgWaitingTime());
-    }
-}
+// class Main {
+//     public static void main(String[] args) {
+//         System.out.println('a');
+//         //  String pname, String pcolour, int AT, int BT, int priority, int pid
+//         Process p1 = new Process("p1", "x", 0, 4, 2, 50);
+//         Process p2 = new Process("p2", "x", 1, 3, 3, 70);
+//         Process p3 = new Process("p3", "x", 2, 1, 4, 101);
+//         Process p4 = new Process("p4", "x", 3, 5, 5, 100);
+//         Process p5 = new Process("p5", "x", 4, 2, 5, 100);
+//         Process arr[] = new Process[] { p1, p2, p3, p4,p5 };
+//         priorityDraft x = new priorityDraft();
+//         Process arr2[] = (x.schedule(arr));
+//         for (int i=0;i<arr2.length; i++)
+//         {
+//             System.out.print(arr2[i].getName());
+//             System.out.print(" ");
+//             System.out.println(arr2[i].getPriorityNumber());
+//         }
+//         int z=5;
+//         int s=2;
+//         float y = z/s;
+//         System.out.println("************");
+//         System.out.println(y);
+//         System.out.println( x.avgTurnAroundTime());
+//         System.out.println( x.avgWaitingTime());
+//     }
+// }

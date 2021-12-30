@@ -7,10 +7,11 @@ public class App {
         int NoOfP = sc.nextInt();
         Process p[] = new Process[NoOfP];
         for (int i = 0; i < NoOfP; i++) {
-            System.out.print("enter name: ");
-            String pname = sc.nextLine();
+            System.out.println("Process number: " + i);
+            System.out.println("enter name: ");
+            String pname = sc.next();
             System.out.println("Enter colour(hex): ");
-            String pcolour = sc.nextLine();
+            String pcolour = sc.next();
             System.out.println("Enter arrival time: ");
             int AT = sc.nextInt();
             System.out.println("Enter burst time: ");
@@ -28,30 +29,35 @@ public class App {
         int choice = sc.nextInt();
         float w;
         float t;
+        GUI testgGui = new GUI();
         switch (choice) {
             case (1):
                 priority x = new priority();
                 Process result[] = x.schedule(p);
                 w = x.avgWaitingTime();
                 t = x.avgTurnAroundTime();
+                testgGui.print(result, result.length, "Priority", w, t);
                 break;
             case (2):
                 SJF y = new SJF();
                 Process result1[] = y.schedule(p, p.length);
                 w = y.getAvgWT(p.length);
                 t = y.getAvgTT(p.length);
+                testgGui.print(result1, result1.length, "Shortest job first", w, t);
                 break;
             case (3):
                 shortestRemainingTime z = new shortestRemainingTime();
                 Process result2[] = z.Schedule(p);
                 w = z.getAverageWaitingTime();
                 t = z.getAverageTurnAroundTime();
+                testgGui.print(result2, result2.length, "Shortest temaining time", w, t);
                 break;
             case (4):
                 AGAT a = new AGAT();
                 Process result3[] = a.Schedule(p);
                 w = a.avgw();
                 t = a.avgt();
+                testgGui.print(result3, result3.length, "AGAT", w, t);
                 break;
         }
     }
