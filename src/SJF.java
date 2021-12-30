@@ -68,13 +68,9 @@ public class SJF{
 
             t = t + x;
         }
-
-        for(int i = 0; i < totalTime; i++){
-            System.out.println(i + ": " + schedule[i].getName() + " WT: " + schedule[i].getWaitingTime() + " TT: " + schedule[i].getTurnAroundTime());
-        }
         float avgWT = average(totalWaitTime, size);
         float avgTT = average(totalTurnAroundTime, size);
-        System.out.println("average wait time is: " + avgWT + " and average turnaround time is: " + avgTT);
+        
         return schedule;
     }
 
@@ -92,6 +88,7 @@ public class SJF{
         return AVG;
     }
 
+    /*
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         System.out.println("enter the number of processes ");
@@ -102,14 +99,8 @@ public class SJF{
         Process p3 = new Process("p3", "r", 3, 2, 0, 3);
         Process p4 = new Process("p4", "r", 5, 2, 0, 4);
         Process[] processList = new Process[] {p1, p2, p3, p4};
-        /*
-        for (int i = 0; i < n; i++){
-            System.out.println("process info for: " + (i+1));
-            Process newP = new Process(sc.next(), sc.next(), sc.nextInt(), sc.nextInt(), 0, (i+1));
-            processList[i] = newP;
-        }
-        */
         schedule(processList, n);
         sc.close();
     }
+    */
 }
