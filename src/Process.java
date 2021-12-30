@@ -11,6 +11,7 @@ public class Process {
     private int scratch; //used for calculations
     public boolean flag=false;
     private int Quantam;
+    private boolean isDisplayed;
 
     public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
         name = pname;
@@ -20,6 +21,7 @@ public class Process {
         priorityNumber = priority;
         PID = pid;
         scratch = 0;
+        isDisplayed = false;
     }
     public String getName() {
         return this.name;
@@ -107,5 +109,13 @@ public class Process {
 
     public void setQuantam(int Quantam) {
         this.Quantam = Quantam;
+    }
+
+    public boolean getDisplayed() {
+        return isDisplayed;
+    }
+
+    public void setDisplayed(boolean isDisplayed) {
+        this.isDisplayed = isDisplayed;
     }
 }
