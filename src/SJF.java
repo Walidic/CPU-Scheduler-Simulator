@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class SJF{
     static int totalTime = 0;
     static int t = 0;
-    static int totalWaitTime = 0;
-    static int totalTurnAroundTime = 0;
-    public static Process[] schedule(Process[] inputList, int size){
+    public static int totalWaitTime = 0;
+    public static int totalTurnAroundTime = 0;
+    public Process[] schedule(Process[] inputList, int size){
         
         for(int i = 0; i < size; i++){
             totalTime += inputList[i].getBurstTime();
@@ -68,9 +68,6 @@ public class SJF{
 
             t = t + x;
         }
-        float avgWT = average(totalWaitTime, size);
-        float avgTT = average(totalTurnAroundTime, size);
-        
         return schedule;
     }
 
@@ -83,9 +80,14 @@ public class SJF{
         return true;
     }
 
-    private static float average(int x, int n){
-        int AVG = x / n;
-        return AVG;
+    public float getAvgWT(int size){
+        float avg = totalWaitTime/size;
+        return avg;
+    }
+
+    public float getAvgTT(int size){
+        float avg = totalTurnAroundTime/size;
+        return avg;
     }
 
     /*
