@@ -9,6 +9,7 @@ public class Process {
     private int turnAroundTime;
     private int executionTime;
     private int scratch; //used for calculations
+    public boolean flag=false;
 
     public Process(String pname, String pcolour, int AT, int BT, int priority, int pid){
         name = pname;

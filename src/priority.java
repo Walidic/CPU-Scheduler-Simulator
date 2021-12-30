@@ -55,16 +55,17 @@ Process procs[];
             totalTime= totalTime + processes[i].getBurstTime();
         }
     }
-    public void adjustPriority()
-    {
-        for (int i = 0; i < procs.length; i++)
-        {
-            if(procs[i]!=null)
-            {
-                procs[i].setPriorityNumber(procs[i].getPriorityNumber()+procs[i].getWaitingTime()); // inc priority for all processes by 1 as time passes
-            }
-        }
-    }
+
+    // public void adjustPriority()
+    // {
+    //     for (int i = 0; i < procsArrived.length; i++)
+    //     {
+    //         if(procsArrived[i]==1)
+    //         {
+    //             procs[i].setPriorityNumber(procs[i].getPriorityNumber()+1); // inc priority for all processes by 1 as time passes
+    //         }
+    //     }
+    // }
     void bubbleSort()
     {   
         int n = procs.length;
@@ -98,29 +99,45 @@ Process procs[];
     public Process []Schedule(Process processes[]) {
          //set local variable so data is shared
         totalTime(processes);
-        System.out.print(totalTime);
-        procs = new Process[totalTime];
-        int j=0; int dummy = 0;
-
+        int [] procsArrived = new int[processes.length];
+        for(int i=0; i<processes.length; i++) 
+        {//intialisze array
+            procsArrived[i]=-1;
+        }
+        procs = new Process[processes.length];
+        int j=0;  int maxPriorityIndex=0;
         for (int i = 0; i < processes.length; i++)
         {
-            dummy =j;
-            int bT = processes[i].getBurstTime();
-            for( j=j; j < dummy+bT; j++ )
-            {
-                procs[j]=processes[i];
-                currentTime++;
-                // adjustPriority();
+            for(int k=0; k<procsArrived.length; k++)
+            {  
+                int maxPriority=-1;
+                if( processes[k].getArrivalTime()<=currentTime && processes[k].flag==false) 
+                { //bd5l el processes ele wslt
+                    procsArrived[k]=1;
+                }
+                if(procsArrived[k]==1 && processes[k].flag==false )
+                {
+                    if( processes[k].getPriorityNumber() > maxPriority && processes[k].flag==false )
+                    {// get higher priority
+                        maxPriority = processes[k].getPriorityNumber();
+                        maxPriorityIndex=i;
+                    }
+                }
             }
-            // bubbleSort();
+            for(int z=0;z<procsArrived.length;z++)
+            {
+                if(z!=maxPriorityIndex && procsArrived[z]==1 && processes[z].flag==false )
+                {//inc priority of other arrived priorites
+                    processes[z].setPriorityNumber(processes[z].getPriorityNumber()+1);
+                }
+            }
+            for(j=j; j<processes[maxPriorityIndex].getBurstTime();j++)
+            {
+                procs[j]=processes[maxPriorityIndex];
+                currentTime++;
+            }
+            processes[maxPriorityIndex].flag= true;
         }
-        startTime();
-        waitingTime();
-        adjustPriority();
-        bubbleSort();
-        turnAroundTime();
-        avgWaitingTime();
-        avgTurnAroundTime();
         return procs;
     }
 }
@@ -132,7 +149,7 @@ class Main {
         Process p2 = new Process("p2", "x", 1, 3, 3, 70);
         Process p3 = new Process("p3", "x", 2, 1, 4, 101);
         Process p4 = new Process("p4", "x", 3, 5, 5, 100);
-        Process p5 = new Process("p5", "x", 4, 2, 5, 100);
+        Process p5 = new Process("p5", "x", 4, 2, 6, 100);
         Process arr[] = new Process[] { p1, p2, p3, p4,p5 };
         priority x = new priority();
         Process arr2[] = new Process[15];
