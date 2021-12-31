@@ -71,9 +71,12 @@ public class GUI extends JFrame {
             for (int j = 0; j < pnumber; j++) {
                 if (result[i].getName() == schedule[j].getName()) {
                     mapList[j].add(block);
-                } else {
+                } 
+                /*
+                else {
                     mapList[j].add(noBlock);
                 }
+                */
             }
         }
 

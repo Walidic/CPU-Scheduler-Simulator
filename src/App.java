@@ -36,21 +36,21 @@ public class App {
                 Process result[] = x.schedule(p);
                 w = x.avgWaitingTime();
                 t = x.avgTurnAroundTime();
-                testgGui.print(result, result.length, "Priority", w, t);
+                testgGui.print(result, NoOfP, "Priority", w, t);
                 break;
             case (2):
                 SJF y = new SJF();
                 Process result1[] = y.schedule(p, p.length);
                 w = y.getAvgWT(p.length);
                 t = y.getAvgTT(p.length);
-                testgGui.print(result1, result1.length, "Shortest job first", w, t);
+                testgGui.print(result1, NoOfP, "Shortest job first", w, t);
                 break;
             case (3):
                 shortestRemainingTime z = new shortestRemainingTime();
                 Process result2[] = z.Schedule(p);
                 w = z.getAverageWaitingTime();
                 t = z.getAverageTurnAroundTime();
-                testgGui.print(result2, result2.length, "Shortest temaining time", w, t);
+                testgGui.print(result2, NoOfP, "Shortest temaining time", w, t);
                 break;
             case (4):
                 AGAT a = new AGAT();
@@ -60,5 +60,6 @@ public class App {
                 testgGui.print(result3, result3.length, "AGAT", w, t);
                 break;
         }
+        sc.close();
     }
 }
