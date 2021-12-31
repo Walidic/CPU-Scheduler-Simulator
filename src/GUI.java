@@ -72,11 +72,9 @@ public class GUI extends JFrame {
                 if (result[i].getName() == schedule[j].getName()) {
                     mapList[j].add(block);
                 } 
-                /*
                 else {
                     mapList[j].add(noBlock);
                 }
-                */
             }
         }
 

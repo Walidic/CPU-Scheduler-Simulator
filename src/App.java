@@ -7,7 +7,7 @@ public class App {
         int NoOfP = sc.nextInt();
         Process p[] = new Process[NoOfP];
         for (int i = 0; i < NoOfP; i++) {
-            System.out.println("Process number: " + i);
+            System.out.println("Process number: " + (i+1));
             System.out.println("enter name: ");
             String pname = sc.next();
             System.out.println("Enter colour(hex): ");
@@ -30,6 +30,12 @@ public class App {
         float w;
         float t;
         GUI testgGui = new GUI();
+
+        int outSize = 0;
+        for (int i = 0; i < NoOfP; i++){
+            outSize += p[i].getBurstTime();
+        }
+        Process[] outputList = new Process[outSize];
         switch (choice) {
             case (1):
                 priority x = new priority();
@@ -37,6 +43,7 @@ public class App {
                 w = x.avgWaitingTime();
                 t = x.avgTurnAroundTime();
                 testgGui.print(result, NoOfP, "Priority", w, t);
+                outputList = result;
                 break;
             case (2):
                 SJF y = new SJF();
@@ -44,6 +51,7 @@ public class App {
                 w = y.getAvgWT(p.length);
                 t = y.getAvgTT(p.length);
                 testgGui.print(result1, NoOfP, "Shortest job first", w, t);
+                outputList = result1;
                 break;
             case (3):
                 shortestRemainingTime z = new shortestRemainingTime();
@@ -51,6 +59,7 @@ public class App {
                 w = z.getAverageWaitingTime();
                 t = z.getAverageTurnAroundTime();
                 testgGui.print(result2, NoOfP, "Shortest temaining time", w, t);
+                outputList = result2;
                 break;
             case (4):
                 AGAT a = new AGAT();
@@ -58,8 +67,15 @@ public class App {
                 w = a.avgw();
                 t = a.avgt();
                 testgGui.print(result3, result3.length, "AGAT", w, t);
+                outputList = result3;
                 break;
         }
+
+        for (int i = 0; i < outSize; i++){
+            System.out.println(i + ": " + outputList[i].getName());
+        }
+
+
         sc.close();
     }
 }
