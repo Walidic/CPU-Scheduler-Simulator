@@ -3,7 +3,7 @@ public class AGAT {
     private int lastindex = -1;
     private int lastQtime = -1;
     public int np;
-    public int tw;
+    public int tw = 0;
     public int tbt;
 
     public float avgw() {
@@ -113,13 +113,13 @@ public class AGAT {
                 int finishTime = currentTime + scratch[minFactorindex].getBurstTime();
                 processes[minFactorindex].setWaitingTime(finishTime
                         - (processes[minFactorindex].getArrivalTime() + processes[minFactorindex].getBurstTime()));
+                tw = tw + processes[minFactorindex].getWaitingTime();
                 processes[minFactorindex].setTurnAroundTime(
                         processes[minFactorindex].getWaitingTime() + processes[minFactorindex].getBurstTime());
                 for (int i = 0; i < scratch[minFactorindex].getBurstTime(); i++) {
                     result[currentTime] = processes[minFactorindex];
                     currentTime++;
                 }
-                System.out.println(processes[minFactorindex].getName());
                 lastQtime = -1;
                 lastindex = -1;
                 scratch[minFactorindex] = null;
