@@ -60,20 +60,19 @@ public class GUI extends JFrame {
             map.add(mapList[i]);
             Pnames.add(processList[i]);
         }
-
-        for (int i = 0; i < result.length; i++) {
-            JPanel block = new JPanel();
-            block.setPreferredSize(new Dimension(blockWidth, blockHeight));
-            block.setBackground(Color.GREEN);
-
-            JPanel noBlock = new JPanel();
-            noBlock.setPreferredSize(new Dimension(blockWidth, blockHeight));
-            for (int j = 0; j < pnumber; j++) {
-                if (result[i].getName() == schedule[j].getName()) {
-                    mapList[j].add(block);
-                } 
-                else {
-                    mapList[j].add(noBlock);
+        JPanel[][] blockList = new JPanel[pnumber][result.length];
+        for (int i = 0; i < pnumber; i++) {
+            for (int j = 0; j < result.length; j++) {
+                JPanel block = new JPanel();
+                block.setPreferredSize(new Dimension(blockWidth, blockHeight));
+                blockList[i][j] = block;
+                mapList[j].add(blockList[i][j]);
+            }
+        }
+        for (int j = 0; j < result.length; j++) {
+            for (int i = 0; i < pnumber; i++) {
+                if (result[j].getName() == schedule[j].getName()) {
+                    blockList[i][j].setBackground(Color.GREEN);
                 }
             }
         }

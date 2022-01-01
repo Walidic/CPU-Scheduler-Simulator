@@ -7,7 +7,7 @@ public class App {
         int NoOfP = sc.nextInt();
         Process p[] = new Process[NoOfP];
         for (int i = 0; i < NoOfP; i++) {
-            System.out.println("Process number: " + (i+1));
+            System.out.println("Process number: " + (i + 1));
             System.out.println("enter name: ");
             String pname = sc.next();
             System.out.println("Enter colour(hex): ");
@@ -32,7 +32,7 @@ public class App {
         GUI testgGui = new GUI();
 
         int outSize = 0;
-        for (int i = 0; i < NoOfP; i++){
+        for (int i = 0; i < NoOfP; i++) {
             outSize += p[i].getBurstTime();
         }
         Process[] outputList = new Process[outSize];
@@ -66,15 +66,14 @@ public class App {
                 Process result3[] = a.Schedule(p);
                 w = a.avgw();
                 t = a.avgt();
-                testgGui.print(result3, result3.length, "AGAT", w, t);
+                testgGui.print(result3, NoOfP, "AGAT", w, t);
                 outputList = result3;
                 break;
         }
 
-        for (int i = 0; i < outSize; i++){
+        for (int i = 0; i < outSize; i++) {
             System.out.println(i + ": " + outputList[i].getName());
         }
-
 
         sc.close();
     }
