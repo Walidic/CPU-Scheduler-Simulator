@@ -1,8 +1,4 @@
 import javax.swing.*;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.border.Border;
-import javax.swing.text.html.HTMLDocument.BlockElement;
-
 import java.awt.*;
 
 public class GUI extends JFrame {
@@ -73,7 +69,7 @@ public class GUI extends JFrame {
         for(int j = 0; j < result.length; j++){
             for(int i = 0; i < pnumber; i++){
                 if(result[j].getName() == schedule[i].getName()){
-                    blockList[i][j].setBackground(Color.GREEN);
+                    blockList[i][j].setBackground(Color.ORANGE);
                 }
             }
         }
