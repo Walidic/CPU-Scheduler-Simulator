@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class GUI extends JFrame {
     public void print(Process[] result, int pnumber, String Sname, float waitTime, float turnAroundTime) {
-        int blockWidth = 720 / result.length;
+        int blockWidth = 660 / result.length;
         int blockHeight = 480 / pnumber;
         JFrame frame = new JFrame();
         frame.setPreferredSize(new Dimension(1200, 800));
@@ -66,12 +66,13 @@ public class GUI extends JFrame {
                 JPanel block = new JPanel();
                 block.setPreferredSize(new Dimension(blockWidth, blockHeight));
                 blockList[i][j] = block;
-                mapList[j].add(blockList[i][j]);
+                mapList[i].add(blockList[i][j]);
             }
         }
-        for (int j = 0; j < result.length; j++) {
-            for (int i = 0; i < pnumber; i++) {
-                if (result[j].getName() == schedule[j].getName()) {
+
+        for(int j = 0; j < result.length; j++){
+            for(int i = 0; i < pnumber; i++){
+                if(result[j].getName() == schedule[i].getName()){
                     blockList[i][j].setBackground(Color.GREEN);
                 }
             }
